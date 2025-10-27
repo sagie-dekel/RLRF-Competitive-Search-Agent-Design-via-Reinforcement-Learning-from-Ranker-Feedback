@@ -71,6 +71,8 @@ RLRF is a methodology that aligns the LLM with the competitive ranking objective
     ├── prompts.py
     ├── README.md
     └── requirements.txt
+    └── conda_requirements.txt
+
 ```
 
 ## Modules
@@ -115,10 +117,11 @@ RLRF is a methodology that aligns the LLM with the competitive ranking objective
 | --- | --- |
 | *config.py* | Contains the configuration settings for the LLM's alignment process (training, datasets, etc.). |
 | *requirements.txt* | Lists the required Python packages and dependencies for the project. |
+| *conda_requirements.txt* | Lists the required conda requirements for the project. |
 | *prompts.py* | Contains the LLM's different prompts for dataset creation. |
 
 </details>
-
+conda_requirements.txt
 ---
 
 ## Getting Started
@@ -142,7 +145,11 @@ RLRF is a methodology that aligns the LLM with the competitive ranking objective
 > cd RLRF-Competitive-Search-Agent-Design-via-Reinforcement-Learning-from-Ranker-Feedback
 > ```
 >
-> 3. Install dependencies:
+> 3. Create Conda environment (optional):
+> ```bash
+> conda create --name <env name> --file <conda_requirements.txt file path>
+> ```
+> > 4. Install dependencies:
 > ```bash
 > pip install -r requirements.txt
 > ```
