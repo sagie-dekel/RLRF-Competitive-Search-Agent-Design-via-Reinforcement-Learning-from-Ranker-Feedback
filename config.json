@@ -1,28 +1,28 @@
 {
   // Define models path
-  "model_RLRF_name_or_path": "mistralai/Ministral-8B-Instruct-2410", "meta-llama/Llama-3.1-8B-Instruct", "google/gemma-2-9b-it", "Qwen/Qwen2.5-7B-Instruct"
-  "RM_name_or_path": "intfloat/e5-large-v2", "intfloat/e5-large-unsupervised", "facebook/contriever", "intfloat/e5-base", "intfloat/e5-base-unsupervised"
+  "model_RLRF_name_or_path": "mistralai/Ministral-8B-Instruct-2410",
+  "RM_name_or_path": "intfloat/e5-large-unsupervised" // The default is a 'perfect' reward model (the ranker)
   "ranker_model_name": null,
 
   // Define data path
-  "queries_path": "C:/Users/sagie/PycharmProjects/RLRF_Pipeline/data/queries_robust.csv",
-  "data_path": "C:/Users/sagie/PycharmProjects/RLRF_Pipeline/data/competition_history_with_relative_order.csv",
-  "RM_train_data": "C:/Users/sagie/PycharmProjects/RLRF_Pipeline/data/comperision_dataset_train.csv",
+  "queries_path": "queries_robust.csv",
+  "data_path": "competition_history.csv",
+  "RM_train_data": "",
 
-  // Hyper parameters for RLRF pipeline
+  //Hyperparameters for RLRF pipeline
   "add_classification_layer_to_reward_model": true,
   "train_full_RM": true, // False will cause to only last layer training
   "train_RM": false,
   "relative_order": true,
   "RM_activation_function": "Sigmoid", 
-  "create_perfernces_dataset": true, // If true and perfernces_dataset_path is null, new preference dataset will be created. else, no affect
-  "perfernces_dataset_path": "C:/Users/sagie/PycharmProjects/RLRF_Pipeline/data/perfernces_dataset_from_ranker_train_queries_and_baseline_doc.csv",
+  "create_perfernces_dataset": true, // If true and perfernces_dataset_path is null, new preference dataset will be created. else, no effect
+  "perfernces_dataset_path": perfernces_dataset_from_ranker_train_queries_and_baseline_doc.csv",
   "value_head_needed": false, // Does the LLM need a value head for alignment 
   "use_baseline_doc_for_perfernces_dataset": true,
   "baseline_doc_column": "rejected",
-  "baseline_document_path": "C:/Users/sagie/PycharmProjects/RLRF_Pipeline/data/perfernces_dataset_robust_queries_with_ranker.csv",
+  "baseline_document_path": "perfernces_dataset_robust_queries_with_ranker.csv",
   
-  // Hyper parameters for RLRF model alignment. All trl trainer config argiments can be added here.
+  //Hyperparameters for RLRF model alignment. All trl library trainer config arguments can be added here.
   "HP_RLRF": {
     "learning_rate": 1e-6,
     "per_device_train_batch_size": 4,
@@ -51,22 +51,22 @@
     "eval_dataset_path": null,
     "eval_strategy": "epoch",
     "eval_on_start": true,
-    "eval_dataset_path": "/rg/kurland_prj/sagie.dekel/data/RLRF/small_data_set/queries/mistral_new_test_ranker_perfernces_dataset_with_baseline_doc.csv",
-    "logging_dir": "/rg/kurland_prj/sagie.dekel/output/RLRF/models/RLRF_model/DPO_1M_600_queries",
-    "model_save_path": "/rg/kurland_prj/sagie.dekel/output/RLRF/models/RLRF_model/DPO_1M_600_queries",
+    "eval_dataset_path": "",
+    "logging_dir": "",
+    "model_save_path": "", //A directory
     "model_config_kwargs_RLRF": {
         "attention_dropout": 0.1
     }
   },
 
-  // Hyper parameters for reward model training
+  //Hyperparameters for reward model training
   "HP_RM": {
     "batch_size": 10,
     "learning_rate_RM": 1.41e-5,
     "epochs": 12,
     "RM_train_loss_func": "GPTRewardLoss",
-    "model_save_path": "/rg/kurland_prj/sagie.dekel/output/RLRF/models/RM/final_test_margin_loss",
-    "log_path": "/rg/kurland_prj/sagie.dekel/output/RLRF/logs/RM/final_test_margin_loss",
+    "model_save_path": "", //A directory
+    "log_path": "",
     "base_model_config_kwargs_RM": {
         "attention_probs_dropout_prob": 0,
         "hidden_dropout_prob": 0
