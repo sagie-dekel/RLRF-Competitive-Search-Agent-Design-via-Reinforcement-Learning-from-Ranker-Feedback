@@ -6,7 +6,6 @@
 
   // Define data path
   "queries_path": "queries_robust.csv",
-  "data_path": "competition_history.csv",
   "RM_train_data": "",
 
   //Hyperparameters for RLRF pipeline
