@@ -33,10 +33,10 @@ RLRF is a methodology that aligns the LLM with the competitive ranking objective
 1. **Reinforcement Learning from Ranker Feedback (RLRF) Methodology**  
    The framework aligns large language models with ranking objectives by transforming ranker outputs (document orderings) into preference feedback used as reinforcement learning signals.  
 
-2. **Flexible Reinforcement Learning Alignment (DPO / PPO)**  
-   The code supports two reinforcement learning algorithms for agent alignment:
-   - **DPO (Direct Preference Optimization):** Directly optimizes likelihood-based approach on ranker-derived document preferences, removing the need for explicit reward modeling.  
-   - **PPO (Proximal Policy Optimization):** A reward-based policy optimization method that leverages a trained reward model for training.  
+2. **Flexible Reinforcement Learning Alignment**  
+   The code supports two deep reinforcement learning algorithms for agent alignment (and can be easily expanded to more using trl library):
+   - **Direct Preference Optimization (DPO):** Directly optimizes likelihood-based approach on ranker-derived document preferences, removing the need for explicit reward modeling.  
+   - **Proximal Policy Optimization (PPO):** A reward-based policy optimization method that leverages a trained reward model for training.  
 
 3. **Two Synthetic Data Generation Paradigms**  
    - **Static Generation (SG):** Produces a preference dataset (document pairs for each query) using only the LLM and the ranker.  
@@ -67,6 +67,9 @@ RLRF is a methodology that aligns the LLM with the competitive ranking objective
     │   ├── rank_promotion_for_offline_evaluation.py
     │   ├── statistical_tests_on_competition_log.py
     │   ├── evaluation_guide.py
+    ├── data/
+    │   ├── preference_datasets/
+    │   ├── MS-marco/
     ├── config.json
     ├── prompts.py
     ├── README.md
@@ -121,7 +124,16 @@ RLRF is a methodology that aligns the LLM with the competitive ranking objective
 | *prompts.py* | Contains the LLM's different prompts for dataset creation. |
 
 </details>
-conda_requirements.txt
+
+<details closed><summary>data</summary>
+
+| File / Folder | Summary |
+| --- | --- |
+| *preference_datasets* | training datasets for the agent's alignment. |
+| *MS-MARCO* | Folder contains queries (split into train and test) from the MS-MARCO dataset (TREC 2022 test collection).
+
+</details>
+
 ---
 
 ## Getting Started
